@@ -62,12 +62,7 @@ function getPromiseResult(source) {
  * [Promise.reject(1), Promise.reject(2), Promise.reject(3)]    => Promise rejected
  */
 function getFirstResolvedPromiseResult(promises) {
-  promises.forEach((promise, index) => {
-    promise.then(() => {
-      return promises[index];
-    });
-  });
-  return promises[promises.length - 1];
+  return Promise.any(promises);
 }
 
 /**
